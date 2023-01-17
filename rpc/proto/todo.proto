@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package todo;
+
+message TodoReponse {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  bool done = 4;
+}
+
+message TodoList {
+  repeated TodoReponse todos = 1;
+}
+
+message CreateTodoRequest {
+  string title = 1;
+  string description = 2;
+}
+
+message UpdateTodoRequest {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  bool done = 4;
+}
+
+message DeleteTodoRequest {
+  string id = 1;
+}
+
+message DeleteTodoResponse {
+  bool ok = 1;
+}
+
+message GetTodoRequest {
+  string id = 1;
+}
+
+service Todo {
+  rpc CreateTodo (CreateTodoRequest) returns (TodoReponse);
+  rpc GetTodo (GetTodoRequest) returns (TodoReponse);
+  rpc ListTodos (google.protobuf.Empty) returns (TodoList);
+  rpc UpdateTodo (UpdateTodoRequest) returns (TodoReponse);
+  rpc DeleteTodo (DeleteTodoRequest) returns (DeleteTodoResponse);
+}
