@@ -1,6 +1,7 @@
 use todo::todo_client::TodoClient;
 use todo::CreateTodoRequest;
 
+
 pub mod todo {
     tonic::include_proto!("todo");
 }
@@ -25,4 +26,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("{:?}", create_response.into_inner().clone());
 
     Ok(())
+
+
 }

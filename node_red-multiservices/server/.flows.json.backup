@@ -1,0 +1,116 @@
+[
+    {
+        "id": "bafa15919ae21bbb",
+        "type": "tab",
+        "label": "service2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "207213655794b27c",
+        "type": "http in",
+        "z": "bafa15919ae21bbb",
+        "name": "",
+        "url": "/service2",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 380,
+        "y": 280,
+        "wires": [
+            [
+                "244005de80094c29",
+                "69671311ae464769"
+            ]
+        ]
+    },
+    {
+        "id": "fea20c5a43b6cfb9",
+        "type": "http response",
+        "z": "bafa15919ae21bbb",
+        "name": "200",
+        "statusCode": "200",
+        "headers": {},
+        "x": 730,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "03e2239b0784dbd0",
+        "type": "http response",
+        "z": "bafa15919ae21bbb",
+        "name": "400",
+        "statusCode": "400",
+        "headers": {},
+        "x": 730,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "244005de80094c29",
+        "type": "debug",
+        "z": "bafa15919ae21bbb",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "69671311ae464769",
+        "type": "switch",
+        "z": "bafa15919ae21bbb",
+        "name": "",
+        "property": "payload.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ok",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ko",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 590,
+        "y": 280,
+        "wires": [
+            [
+                "fea20c5a43b6cfb9"
+            ],
+            [
+                "03e2239b0784dbd0"
+            ],
+            [
+                "19b8c290394557cd"
+            ]
+        ]
+    },
+    {
+        "id": "19b8c290394557cd",
+        "type": "http response",
+        "z": "bafa15919ae21bbb",
+        "name": "500",
+        "statusCode": "500",
+        "headers": {},
+        "x": 730,
+        "y": 320,
+        "wires": []
+    }
+]

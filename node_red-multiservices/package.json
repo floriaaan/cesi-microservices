@@ -1,0 +1,20 @@
+{
+  "name": "@floriaaan-cesi-ms/node_red-rpc",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-server": "node-red -p 1880 -u ./server -s ./server/settings.js",
+    "start-service2": "node-red -p 1881 -u ./service2 -s ./service2/settings.js",
+    "start": "concurrently \"npm:start-*\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-red": "^3.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
