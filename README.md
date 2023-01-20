@@ -19,6 +19,7 @@ cd rust-sum
 cargo run
 ```
 
+
 ## Mardi 17/01
 
 `rust-rpc-todo`: implémentation microservice, d'une communication RPC pour une todolist
@@ -32,6 +33,8 @@ cd rust-rpc
 cargo run --bin grpc-server
 cargo run --bin grpc-client
 ```
+
+---
 
 `node-rpc-mosquitto`: implémentation microservice, d'une communication RPC et d'un broker MQTT
 
@@ -103,6 +106,8 @@ curl --request GET \
 cd gokit-sum-svc1
 go run .
 ```
+
+---
 
 `gokit-sum-svc2`: implémentation microservice, d'une somme avec `go-kit`, avec un logger
 
