@@ -21,7 +21,7 @@ cargo run
 
 ## Mardi 17/01
 
-`rust-rpc`: implémentation microservice, d'une communication RPC pour une todolist
+`rust-rpc-todo`: implémentation microservice, d'une communication RPC pour une todolist
 
 - utilisation de `tonic`/`tokio`/`prost`, expression du protobuf `proto/todo.proto`
 
@@ -31,6 +31,31 @@ cargo run
 cd rust-rpc
 cargo run --bin grpc-server
 cargo run --bin grpc-client
+```
+
+`node-rpc-mosquitto`: implémentation microservice, d'une communication RPC et d'un broker MQTT
+
+- utilisation de `@grpc-js`/`mqtt`/, expression du protobuf `proto/transformer.proto`
+
+### Initialisation
+
+
+```sh
+cd node-rpc-mosquitto
+npm install # (pnpm install)
+```
+
+### Lancement
+
+```sh
+cd node-rpc-mosquitto
+npm start # (pnpm start) # lancera les deux services en simultané
+```
+
+Appel du service RPC via `mosquitto`
+
+```sh
+mosquitto_pub -t transformer-uppercase -m "test de la transformation en majuscule"
 ```
 
 ## Mercredi 18/01
