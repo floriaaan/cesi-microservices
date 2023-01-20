@@ -1,13 +1,98 @@
 # Microservices - cours CESI
 
-`rpc`: implémentation microservice, d'une communication RPC pour une todolist
-- utilisation de `tonic`/`tokio`/`prost`, expression du protobuf `proto/todo.proto`
+## Prérequis
 
-`somme`: api rest, calcul d'une somme
+- `rust` (stable, 1.66.1 => stable-aarch64-apple-darwin)
+- `go` (stable, 1.19.5 => darwin/arm64)
+- `node` (lts 18.12.0)
+
+## Lundi 16/01
+
+`rust-sum`: api rest, calcul d'une somme
+
 - utilisation de `rocket`
 
+### Lancement
 
+```sh
+cd rust-sum
+cargo run
+```
 
----
+## Mardi 17/01
 
-Vous savez, je crois que chaque situation a ses propres défis et opportunités. Ma vie, c'est avant tout des rencontres. Des gens qui m'ont aidé à grandir, à devenir plus fort, à voir les choses sous un autre angle. Les hasards de la vie sont étranges, mais ils ont façonné mon destinée. Je crois que lorsque nous avons une passion, une envie de faire les choses de manière juste et belle, nous trouvons toujours des personnes pour nous aider à avancer. Pour moi, c'est l'optimisme qui me guide dans tout ce que je fais, qu'il s'agisse de résoudre des problèmes ou de servir ma communauté. C'est ce goût de voir le verre à moitié plein qui me pousse à donner le meilleur de moi-même. L'optimisme, c'est mon secret, c'est ma force.
+`rust-rpc`: implémentation microservice, d'une communication RPC pour une todolist
+
+- utilisation de `tonic`/`tokio`/`prost`, expression du protobuf `proto/todo.proto`
+
+### Lancement
+
+```sh
+cd rust-rpc
+cargo run --bin grpc-server
+cargo run --bin grpc-client
+```
+
+## Mercredi 18/01
+
+`node_red-multiservices`: implémentation multi-service avec `node-red`
+
+### Initialisation
+
+```sh
+cd node_red-multiservices
+npm install # (pnpm install)
+```
+
+### Lancement
+
+```sh
+cd node_red-multiservices
+npm start # (pnpm start) # lancera les deux services en simultané
+```
+
+### Utilisation
+
+- `http://localhost:1881/` : interface web de node-red server
+- `http://localhost:1880/` : interface web de node-red service2
+
+```sh
+curl --request GET \
+  --url 'http://localhost:1881/server?type=ok' # retourne une 200
+
+curl --request GET \
+  --url 'http://localhost:1881/server?type=ko' # retourne une 400
+
+curl --request GET \
+  --url 'http://localhost:1881/server?type=blabla' # retourne une 500
+
+```
+
+## Jeudi 19/01
+
+`gokit-sum-svc1`: implémentation microservice, d'une somme avec `go-kit`
+
+### Lancement
+
+```sh
+cd gokit-sum-svc1
+go run .
+```
+
+`gokit-sum-svc2`: implémentation microservice, d'une somme avec `go-kit`, avec un logger
+
+### Lancement
+
+```sh
+cd gokit-sum-svc1
+go run .
+```
+
+### Utilisation
+
+```sh
+curl --request GET \
+  --url http://localhost:8080/sum \
+  --header 'Content-Type: application/json' \
+  --data '{"num1": "1","num2": "3"}'
+```
